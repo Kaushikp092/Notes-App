@@ -9,6 +9,8 @@ const NoteForm = ({ notes, setNotes }) => {
       description: "",
    });
 
+   const [isFormVisible, setIsFormVisible] = useState(false);
+
    // single function to multiple use
    const handleChange = (e) => {
       setFormData({
@@ -33,77 +35,91 @@ const NoteForm = ({ notes, setNotes }) => {
          title: "",
          category: "Work",
          priority: "Medium",
-         description: ""
-
-   })
+         description: "",
+      });
    };
    return (
-      <form onSubmit={handleSubmit} className="mb-6">
-         {/* title input */}
-         <div className="mb-4">
-            <label htmlFor="title" className="black font-semibold">
-               Title
-            </label>
-            <input
-               name="title"
-               type="text"
-               className="w-full p-2 border rounded-lg"
-               value={formData.title}
-               onChange={handleChange} //change this into function handleChange
-            />
-         </div>
-         {/* Priority input */}
-         <div className="mb-4">
-            <label htmlFor="priority" className="black font-semibold">
-               Priority
-            </label>
-            <select
-               name="priority"
-               type="text"
-               className="w-full p-2 border rounded-lg"
-               value={formData.priority}
-               onChange={handleChange} //change this into function handleChange
-            >
-               <option value="High">High</option>
-               <option value="Medium">Medium</option>
-               <option value="Low">Low</option>
-            </select>
-         </div>
-         {/* Category input */}
-         <div className="mb-4">
-            <label htmlFor="category" className="black font-semibold">
-               Category
-            </label>
-            <select
-               name="category"
-               type="text"
-               className="w-full p-2 border rounded-lg"
-               value={formData.category}
-               onChange={handleChange} //change this into function handleChange
-            >
-               <option value="Work">Work</option>
-               <option value="Personal">Personal</option>
-               <option value="Ideas">Ideas</option>
-            </select>
-         </div>
-         {/* textarea input */}
-         <div className="mb-4">
-            <label htmlFor="description" className="black font-semibold">
-               Description
-            </label>
-            <textarea
-               name="description"
-               type="text"
-               className="w-full p-2 border rounded-lg"
-               value={formData.description}
-               onChange={handleChange} //change this into function handleChange
-            ></textarea>
-         </div>
-         <button className="w-full bg-purple-500 text-white py-2 rounded-lg cursor-pointer hover:bg-purple-600">
-            Add Note
+      <>
+         {/* Toggle Button */}
+         {/* Add new functionality onclick*/}
+         <button
+            onClick={() => setIsFormVisible(!isFormVisible)}
+            className="w-full bg-gray-100 border border-gray-300 text-purple-800 py-2 rounded-lg cursor-pointer hover:bg-purple-200 hover:border-purple-300 transition mb-4"
+         >
+            {isFormVisible ? "Hide Form" : "Add New Note"}
          </button>
-         {/* added simple styling to the button */}
-      </form>
+
+         {/* Form */}
+         {/* if form is visible */}
+         {isFormVisible && (
+            <form onSubmit={handleSubmit} className="mb-6">
+               {/* title input */}
+               <div className="mb-4">
+                  <label htmlFor="title" className="black font-semibold">
+                     Title
+                  </label>
+                  <input
+                     name="title"
+                     type="text"
+                     className="w-full p-2 border rounded-lg"
+                     value={formData.title}
+                     onChange={handleChange} //change this into function handleChange
+                  />
+               </div>
+               {/* Priority input */}
+               <div className="mb-4">
+                  <label htmlFor="priority" className="black font-semibold">
+                     Priority
+                  </label>
+                  <select
+                     name="priority"
+                     type="text"
+                     className="w-full p-2 border rounded-lg"
+                     value={formData.priority}
+                     onChange={handleChange} //change this into function handleChange
+                  >
+                     <option value="High">High</option>
+                     <option value="Medium">Medium</option>
+                     <option value="Low">Low</option>
+                  </select>
+               </div>
+               {/* Category input */}
+               <div className="mb-4">
+                  <label htmlFor="category" className="black font-semibold">
+                     Category
+                  </label>
+                  <select
+                     name="category"
+                     type="text"
+                     className="w-full p-2 border rounded-lg"
+                     value={formData.category}
+                     onChange={handleChange} //change this into function handleChange
+                  >
+                     <option value="Work">Work</option>
+                     <option value="Personal">Personal</option>
+                     <option value="Ideas">Ideas</option>
+                  </select>
+               </div>
+               {/* textarea input */}
+               <div className="mb-4">
+                  <label htmlFor="description" className="black font-semibold">
+                     Description
+                  </label>
+                  <textarea
+                     name="description"
+                     type="text"
+                     className="w-full p-2 border rounded-lg"
+                     value={formData.description}
+                     onChange={handleChange} //change this into function handleChange
+                  ></textarea>
+               </div>
+               <button className="w-full bg-purple-500 text-white py-2 rounded-lg cursor-pointer hover:bg-purple-600">
+                  Add Note
+               </button>
+               {/* added simple styling to the button */}
+            </form>
+         )}
+      </>
    );
 };
 
