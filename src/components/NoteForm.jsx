@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-const NoteForm = () => {
+const NoteForm = ({ notes, setNotes }) => {
    //if multiple inputs is there then instead of defining single useState we use object
    const [formData, setFormData] = useState({
       title: "",
@@ -17,8 +17,28 @@ const NoteForm = () => {
       });
    };
 
+   const handleSubmit = (e) => {
+      e.preventDefault();
+      //validation check that title and description should not be empty
+      if (!formData.title || !formData.description) return;
+
+      //Create note object
+      const newNote = { id: Date.now(), ...formData };
+
+      //Add notes to state
+      setNotes([newNote, ...notes]);
+
+      //Reset form data After submitting data
+      setFormData({
+         title: "",
+         category: "Work",
+         priority: "Medium",
+         description: ""
+
+   })
+   };
    return (
-      <form action="" className="mb-6">
+      <form onSubmit={handleSubmit} className="mb-6">
          {/* title input */}
          <div className="mb-4">
             <label htmlFor="title" className="black font-semibold">
