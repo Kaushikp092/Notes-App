@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import NoteForm from './components/NoteForm'
+import NoteList from './components/NoteList';
 
 const App = () => {
 
@@ -11,6 +12,7 @@ const App = () => {
 
 
       <NoteForm notes={notes} setNotes={setNotes}/> {/* form data while store in setNotes in Arrays form */}
+      <NoteList notes={notes}/>{/* showing data sent in input in list*/}
     </div>
   )
 }
