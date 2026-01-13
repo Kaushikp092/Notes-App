@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import TextInput from "./inputs/TextInput";
+import SelectInput from "./inputs/SelectInput";
 
 const NoteForm = ({ notes, setNotes }) => {
    //if multiple inputs is there then instead of defining single useState we use object
@@ -64,22 +65,21 @@ const NoteForm = ({ notes, setNotes }) => {
                />
 
                {/* Priority input */}
-               <div className="mb-4">
-                  <label htmlFor="priority" className="black font-semibold">
-                     Priority
-                  </label>
-                  <select
-                     name="priority"
-                     type="text"
-                     className="w-full p-2 border rounded-lg"
-                     value={formData.priority}
-                     onChange={handleChange} //change this into function handleChange
-                  >
-                     <option value="High">High</option>
-                     <option value="Medium">Medium</option>
-                     <option value="Low">Low</option>
-                  </select>
-               </div>
+               <SelectInput
+                  // labal=title
+                  label="Priority"
+                  //name is for setting input field options
+                  name="priority"
+                  value={formData.priority}
+                  onChange={handleChange}
+                  // sending priority options here
+                  options={[
+                     { value: "High", label: "High" },
+                     { value: "Medium", label: "Medium" },
+                     { value: "Low", label: "Low" },
+                  ]}
+               />
+
                {/* Category input */}
                <div className="mb-4">
                   <label htmlFor="category" className="black font-semibold">
