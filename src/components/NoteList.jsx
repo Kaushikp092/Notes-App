@@ -12,7 +12,9 @@ const NoteList = ({ notes, deleteNote }) => {
          {notes.map((note) => (
             <div
                key={note.id}
-               className="p-4 bg-white rounded-lg shadow-md border-x-2"
+               className="p-4 bg-white rounded-lg shadow-md border-l-6"
+               style={{borderColor: note.priority === 'High' ? 'red' : note.priority === 'Medium' ? 'orange' : 'green'}}
+
             >
                {/* creating div below add note button where all input data will show in ui */}
 
