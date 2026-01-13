@@ -74,6 +74,7 @@ const NoteForm = ({ notes, setNotes }) => {
                   onChange={handleChange}
                   // sending priority options here
                   options={[
+                     //passing in objects arrays form
                      { value: "High", label: "High" },
                      { value: "Medium", label: "Medium" },
                      { value: "Low", label: "Low" },
@@ -81,22 +82,19 @@ const NoteForm = ({ notes, setNotes }) => {
                />
 
                {/* Category input */}
-               <div className="mb-4">
-                  <label htmlFor="category" className="black font-semibold">
-                     Category
-                  </label>
-                  <select
-                     name="category"
-                     type="text"
-                     className="w-full p-2 border rounded-lg"
-                     value={formData.category}
-                     onChange={handleChange} //change this into function handleChange
-                  >
-                     <option value="Work">Work</option>
-                     <option value="Personal">Personal</option>
-                     <option value="Ideas">Ideas</option>
-                  </select>
-               </div>
+               <SelectInput
+                  label="Category"
+                  name="category"
+                  value={formData.category}
+                  onChange={handleChange}
+                  //sending category options
+                  options={[
+                     { value: "Work", label: "Work" },
+                     { value: "Personal", label: "Personal" },
+                     { value: "Ideas", label: "Ideas" },
+                  ]}
+               />
+
                {/* textarea input */}
                <div className="mb-4">
                   <label htmlFor="description" className="black font-semibold">
