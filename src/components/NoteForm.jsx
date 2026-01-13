@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import TextInput from "./inputs/TextInput";
 
 const NoteForm = ({ notes, setNotes }) => {
    //if multiple inputs is there then instead of defining single useState we use object
@@ -50,22 +51,18 @@ const NoteForm = ({ notes, setNotes }) => {
          </button>
 
          {/* Form */}
-         {/* if form is visible */}
+         {/* if isformvisible is true then only the form automatically will be shown in ui*/}
          {isFormVisible && (
             <form onSubmit={handleSubmit} className="mb-6">
                {/* title input */}
-               <div className="mb-4">
-                  <label htmlFor="title" className="black font-semibold">
-                     Title
-                  </label>
-                  <input
-                     name="title"
-                     type="text"
-                     className="w-full p-2 border rounded-lg"
-                     value={formData.title}
-                     onChange={handleChange} //change this into function handleChange
-                  />
-               </div>
+               <TextInput
+                  label="Title"
+                  name="title"
+                  value={formData.title}
+                  onChange={handleChange}
+                  requried
+               />
+
                {/* Priority input */}
                <div className="mb-4">
                   <label htmlFor="priority" className="black font-semibold">
