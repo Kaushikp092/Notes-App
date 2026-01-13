@@ -1,45 +1,16 @@
 import React from "react";
+import Note from "./Note";
 
 const NoteList = ({ notes, deleteNote }) => {
-    // checking here if notes list is empty then no notes yet will shown after add note button
+   // checking here if notes list is empty then no notes yet will shown after add note button
    if (notes.length === 0) {
       return <p className="text-center text-gray-500">No Notes Yet</p>;
    }
    return (
       <div className="space-y-4">
-         {/* creating form list for after submitting form*/}
-
          {notes.map((note) => (
-            <div
-               key={note.id}
-               className="p-4 bg-white rounded-lg shadow-md border-l-6"
-               style={{borderColor: note.priority === 'High' ? 'red' : note.priority === 'Medium' ? 'orange' : 'green'}}
-
-            >
-               {/* creating div below add note button where all input data will show in ui */}
-
-               {/* Showing input title in first*/}
-               <h3 className="text-lg font-bold">{note.title}</h3>
-
-               {/* Showing priority*/}
-               <p className="text-sm text-gray-600">
-                  <strong>Priority:</strong> {note.priority}
-               </p>
-
-               {/* Showing category*/}
-               <p className="text-sm text-gray-600">
-                  <strong>Category:</strong> {note.category}
-               </p>
-
-               {/* Showing Description*/}
-               <p className="text-sm text-gray-600">
-                  <strong>Description:</strong> {note.description}
-               </p>
-
-               <button onClick={() =>deleteNote(note.id)} className="mt-3 text-red-500 cursor-pointer transition hover:text-re>d-700">
-                  Delete
-               </button>
-            </div>
+            // create new note.jsx component to make code clean and easy to understand
+            <Note key={note.id} note={note} deleteNote={deleteNote} />
          ))}
       </div>
    );
