@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import TextInput from "./inputs/TextInput";
 import SelectInput from "./inputs/SelectInput";
+import TextArea from "./inputs/TextArea";
 
 const NoteForm = ({ notes, setNotes }) => {
    //if multiple inputs is there then instead of defining single useState we use object
@@ -96,18 +97,14 @@ const NoteForm = ({ notes, setNotes }) => {
                />
 
                {/* textarea input */}
-               <div className="mb-4">
-                  <label htmlFor="description" className="black font-semibold">
-                     Description
-                  </label>
-                  <textarea
-                     name="description"
-                     type="text"
-                     className="w-full p-2 border rounded-lg"
-                     value={formData.description}
-                     onChange={handleChange} //change this into function handleChange
-                  ></textarea>
-               </div>
+               <TextArea
+                  label="Description"
+                  name="description"
+                  value={formData.description}
+                  onChange={handleChange}
+                  requried
+               />
+
                <button className="w-full bg-purple-500 text-white py-2 rounded-lg cursor-pointer hover:bg-purple-600">
                   Add Note
                </button>
