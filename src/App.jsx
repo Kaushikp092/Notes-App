@@ -1,9 +1,17 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import NoteForm from "./components/NoteForm";
 import NoteList from "./components/NoteList";
 
 const App = () => {
-   const [notes, setNotes] = useState([]);
+   const [notes, setNotes] = useState(() => {
+      const notes = JSON.parse(localStorage.getItem('notes'));
+      return notes || [];
+   });//checking here if notes is already in localstorage then it will show directly or shows No Notes Yet
+
+   //using useEffect to store notes in localstorage
+   useEffect(() => {
+      localStorage.setItem("notes", JSON.stringify(notes));
+   }, [notes]); //add to dependency and run this whenever notes changes
 
    const deleteNote = (id) => {
       const confirmDelete = window.confirm(
