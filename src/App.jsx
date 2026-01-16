@@ -3,10 +3,7 @@ import NoteForm from "./components/NoteForm";
 import NoteList from "./components/NoteList";
 
 const App = () => {
-   const [notes, setNotes] = useState(() => {
-      const notes = JSON.parse(localStorage.getItem('notes'));
-      return notes || [];
-   });//checking here if notes is already in localstorage then it will show directly or shows No Notes Yet
+   const [notes, setNotes] = useState([]);//checking here if notes is already in localstorage then it will show directly or shows No Notes Yet
 
    //using useEffect to store notes in localstorage
    useEffect(() => {
